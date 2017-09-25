@@ -16,6 +16,7 @@ public class PropertiesLoader  {
     protected String userEmail;
     protected String userPassword;
     protected String basePage;
+    protected String productName;
 
     public PropertiesLoader() {
         try {
@@ -37,7 +38,8 @@ public class PropertiesLoader  {
 
         userEmail = prop.getProperty("user.email");
         userPassword = prop.getProperty("user.password");
-        basePage = prop.getProperty("base.page");
+        basePage = System.getProperty("URL", prop.getProperty("base.page"));
+        productName = System.getProperty("productName", prop.getProperty("product.name"));
 
         inputStream.close();
     }
@@ -47,4 +49,6 @@ public class PropertiesLoader  {
     public String getUserPassword() { return userPassword; }
 
     public String getBasePage() { return basePage; }
+
+    public String getProductName() { return productName; }
 }
