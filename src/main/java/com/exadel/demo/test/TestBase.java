@@ -32,4 +32,6 @@ public class TestBase {
         logger.info("Close driver");
         driver.close();
     }
+
+    public RemoteWebDriver getDriver() { return driver; }
 }

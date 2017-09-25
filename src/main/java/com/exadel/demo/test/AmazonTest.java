@@ -30,9 +30,21 @@ public class AmazonTest extends TestBase {
         assertion.assertAll();
     }
 
-    @Title("Test product title")
+    @Title("Test product title: Iphone")
     @Test(groups = {SMOKE})
-    public void testProductTitle() {
+    public void testProductTitleIphone() {
+        Page page = new Page(driver);
+        HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
+        ProductPage productPage = homePage.setSearchCategory("Amazon Devices")
+                .inputProductName("Kindle")
+                .clickOnSearchButton()
+                .clickOnProductById(0);
+        assertTrue(StringUtils.containsIgnoreCase(productPage.getProductTitleText(), "Iphone"));
+    }
+
+    @Title("Test product title: Kindle")
+    @Test(groups = {SMOKE})
+    public void testProductTitleKindle() {
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
         ProductPage productPage = homePage.setSearchCategory("Amazon Devices")
