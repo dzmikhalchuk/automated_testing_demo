@@ -6,6 +6,7 @@ import com.exadel.demo.core.pages.ProductPage;
 import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Title;
 
 import static com.exadel.demo.core.enums.TestGroups.SMOKE;
@@ -13,6 +14,7 @@ import static org.testng.Assert.assertTrue;
 
 public class AmazonTest extends TestBase {
 
+    @Features("Product elements")
     @Title("Test product elements")
     @Test(groups = {SMOKE})
     public void testProductElements() {
@@ -30,6 +32,7 @@ public class AmazonTest extends TestBase {
         assertion.assertAll();
     }
 
+    @Features("Product search")
     @Title("Test product title: Iphone")
     @Test(groups = {SMOKE})
     public void testProductTitleIphone() {
@@ -42,6 +45,7 @@ public class AmazonTest extends TestBase {
         assertTrue(StringUtils.containsIgnoreCase(productPage.getProductTitleText(), "Iphone"), "Product title does not contain 'Iphone'");
     }
 
+    @Features("Product search")
     @Title("Test product title: Kindle")
     @Test(groups = {SMOKE})
     public void testProductTitleKindle() {

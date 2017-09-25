@@ -24,22 +24,22 @@ public class ProductPage extends Page {
     @FindBy(css = "#imgTagWrapperId")
     WebElement productImage;
 
-    @Step("Verify that is product title presented")
+    @Step("Verify that is product title is presented")
     public boolean isProductTitleDisplayed() {
         return ElementsUtil.isElementDisplayedAndEnabled(productTitle);
     }
 
-    @Step("Verify that is product rate presented")
+    @Step("Verify that is product rate is presented")
     public boolean isProductRateDisplayed() {
         return ElementsUtil.isElementDisplayedAndEnabled(productRate);
     }
 
-    @Step("Verify that is product price presented")
+    @Step("Verify that is product price is presented")
     public boolean isProductPriceDisplayed() {
         return ElementsUtil.isElementDisplayedAndEnabled(productPrice);
     }
 
-    @Step("Verify that is product image presented")
+    @Step("Verify that is product image is presented")
     public boolean isProductImageDisplayed() {
         return ElementsUtil.isElementDisplayedAndEnabled(productImage);
     }

@@ -25,7 +25,7 @@ public class TestBase {
     @BeforeSuite(alwaysRun = true)
     public void setEnvironment() {
         env = new Properties();
-        env.setProperty("URL", propertiesLoader.getBasePage());
+        env.setProperty("Base URL", propertiesLoader.getBasePage());
         env.setProperty("Product name", propertiesLoader.getProductName());
     }
 
