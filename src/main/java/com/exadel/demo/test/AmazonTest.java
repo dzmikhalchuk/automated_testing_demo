@@ -39,7 +39,7 @@ public class AmazonTest extends TestBase {
                 .inputProductName("Kindle")
                 .clickOnSearchButton()
                 .clickOnProductById(0);
-        assertTrue(StringUtils.containsIgnoreCase(productPage.getProductTitleText(), "Iphone"));
+        assertTrue(StringUtils.containsIgnoreCase(productPage.getProductTitleText(), "Iphone"), "Product title does not contain 'Iphone'");
     }
 
     @Title("Test product title: Kindle")
@@ -51,6 +51,6 @@ public class AmazonTest extends TestBase {
                 .inputProductName("Kindle")
                 .clickOnSearchButton()
                 .clickOnProductById(0);
-        assertTrue(StringUtils.containsIgnoreCase(productPage.getProductTitleText(), "Kindle"));
+        assertTrue(StringUtils.containsIgnoreCase(productPage.getProductTitleText(), "Kindle"), "Product title does not contain 'Kindle'");
     }
 }
