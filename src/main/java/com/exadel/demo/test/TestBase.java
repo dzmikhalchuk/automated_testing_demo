@@ -1,16 +1,15 @@
 package com.exadel.demo.test;
 
+import com.exadel.demo.core.utils.CustomTestListener;
 import com.exadel.demo.core.utils.DriverFactory;
 import com.exadel.demo.core.utils.PropertiesLoader;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.LoggerFactory;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 import java.net.MalformedURLException;
 
+@Listeners({CustomTestListener.class})
 public class TestBase {
 
     protected RemoteWebDriver driver;
