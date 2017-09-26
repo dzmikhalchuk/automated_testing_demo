@@ -1,10 +1,12 @@
 package com.exadel.demo.test;
 
 import com.exadel.demo.core.testrail.APIClient;
+import com.exadel.demo.core.testrail.APIException;
 import com.exadel.demo.core.utils.CustomTestListener;
 import com.exadel.demo.core.utils.DriverFactory;
 import com.exadel.demo.core.utils.PropertiesLoader;
 import com.exadel.demo.core.utils.testrailUtils.TestRailListener;
+import org.json.simple.JSONObject;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
@@ -18,6 +20,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 @Listeners({CustomTestListener.class, TestRailListener.class})
@@ -31,10 +35,20 @@ public class TestBase {
     protected String url;
 
     @BeforeSuite(alwaysRun = true)
-    public void setEnvironment() {
+    public void setEnvironment() throws IOException, APIException {
         env = new Properties();
         env.setProperty("Base URL", propertiesLoader.getBasePage());
         env.setProperty("Product name", propertiesLoader.getProductName());
+
+        APIClient client = new APIClient("https://dzmikhalchuk.testrail.net");
+        client.setUser("dmitry.mikhalchuk@gmail.com");
+        client.setPassword("NMZ8GFk0gl1caMLi9GoX");
+
+        Map data = new HashMap();
+        data.put("suit_id", 1);
+        data.put("name", "Demo Test Run");
+//        data.put("case_ids", "[1, 2]");
+        JSONObject r = (JSONObject) client.sendPost("add_run/1", data);
     }
 
     @BeforeMethod

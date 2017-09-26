@@ -13,9 +13,16 @@ public class TestRailConnector {
         APIClient client = new APIClient("https://dzmikhalchuk.testrail.net");
         client.setUser("dmitry.mikhalchuk@gmail.com");
         client.setPassword("NMZ8GFk0gl1caMLi9GoX");
+//        Map data = new HashMap();
+//        data.put("status_id", 5);
+//        data.put("comment", "This test worked fine!");
+//        JSONObject r = (JSONObject) client.sendPost("add_result_for_case/1/1", data);
+
+        int[] array = {1, 2};
         Map data = new HashMap();
-        data.put("status_id", 5);
-        data.put("comment", "This test worked fine!");
-        JSONObject r = (JSONObject) client.sendPost("add_result_for_case/1/1", data);
+        data.put("suit_id", 1);
+        data.put("name", "Demo Test Run");
+        data.put("case_ids", array);
+        JSONObject r = (JSONObject) client.sendPost("add_run/1", data);
     }
 }

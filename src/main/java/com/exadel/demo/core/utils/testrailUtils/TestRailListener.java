@@ -2,7 +2,6 @@ package com.exadel.demo.core.utils.testrailUtils;
 
 import com.exadel.demo.core.testrail.APIClient;
 import com.exadel.demo.core.testrail.APIException;
-import org.apache.commons.lang3.StringUtils;
 import org.json.simple.JSONObject;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
@@ -26,7 +25,7 @@ public class TestRailListener extends TestListenerAdapter {
             String replaceMsg = "java.lang.AssertionError: ";
             Map data = new HashMap();
             data.put("status_id", status);
-            data.put("comment", "Environment: " + message + ". Test Failed." + "</br>" + "Error message: " + result.getThrowable().toString().replaceAll(replaceMsg, ""));
+            data.put("comment", "Environment: " + message + ". Test Failed." + "Error message: " + result.getThrowable().toString().replaceAll(replaceMsg, ""));
             try {
                 JSONObject r = (JSONObject) client.sendPost("add_result_for_case/1/" + caseId, data);
             } catch (IOException e) {
