@@ -41,7 +41,7 @@ public class HomePage extends Page
         return new LoginPage(driver);
     }
 
-    @Step("Set search category {0}")
+    @Step("Set search category: {0}")
     public HomePage setSearchCategory(String categoryName) {
         logger.info("Set search category");
         Select categories = new Select(categoryDropdown);
@@ -49,7 +49,7 @@ public class HomePage extends Page
         return this;
     }
 
-    @Step("Input product name: {0}")
+    @Step("Input product name in the search box: {0}")
     public HomePage inputProductName(String productName) {
         setInput(searchInput, productName);
         return this;
