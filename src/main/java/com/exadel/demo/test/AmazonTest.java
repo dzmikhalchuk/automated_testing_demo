@@ -8,7 +8,6 @@ import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Stories;
-import ru.yandex.qatools.allure.annotations.TestCaseId;
 import ru.yandex.qatools.allure.annotations.Title;
 
 import static org.testng.Assert.assertTrue;
@@ -36,7 +35,7 @@ public class AmazonTest extends TestBase {
 
     @Features("PRODUCTS")
     @Stories("PRODUCT SEARCH")
-    @Title("Test product title: Iphone")
+    @Title("Test product title: Phone")
     @Test
     public void testProductTitleIphone() {
         Page page = new Page(driver);
@@ -45,7 +44,7 @@ public class AmazonTest extends TestBase {
                 .inputProductName("Kindle")
                 .clickOnSearchButton()
                 .clickOnProductById(0);
-        assertTrue(StringUtils.containsIgnoreCase(productPage.getProductTitleText(), "Iphone"), "Product title does not contain 'Iphone'");
+        assertTrue(StringUtils.containsIgnoreCase(productPage.getProductTitleText(), "Phone"), "Product title does not contain 'Iphone'");
     }
 
     @Features("PRODUCTS")
