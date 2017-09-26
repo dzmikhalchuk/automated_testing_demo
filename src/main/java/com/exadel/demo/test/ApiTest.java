@@ -12,6 +12,7 @@ import java.nio.file.Paths;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+
 public class ApiTest {
 
     //text/plain, text/html, text/css, text/javascript
@@ -81,7 +82,7 @@ public class ApiTest {
 //
 //        assertion.assertAll();
 
-        verifyJsonSchema(myRes, "test_schema.json");
+        verifyJsonSchema(myRes, "test_schema2.json");
     }
 
     @Step("checking compliance of response with JSON schema")
