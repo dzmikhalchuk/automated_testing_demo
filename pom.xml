@@ -16,9 +16,9 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <testng.version>6.9.9</testng.version>
-        <seleniumhq.verion>3.5.1</seleniumhq.verion>
+        <seleniumhq.verion>3.4.0</seleniumhq.verion>
         <operadriver.version>1.5</operadriver.version>
-        <yandexallure.version>2.5</yandexallure.version>
+        <yandexallure.version>2.6</yandexallure.version>
         <apachepoi.version>3.9</apachepoi.version>
         <googleguice.version>3.0</googleguice.version>
         <saucelabs.version>2.1.21</saucelabs.version>
