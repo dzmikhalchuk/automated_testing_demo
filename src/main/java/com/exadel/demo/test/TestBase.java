@@ -45,7 +45,7 @@ public class TestBase {
 
         XmlTest test = context.getCurrentXmlTest();
         test.setName(test.getName() + ": " + browser);
-        browser = browser;
+        this.browser = browser;
     }
 
     @AfterMethod

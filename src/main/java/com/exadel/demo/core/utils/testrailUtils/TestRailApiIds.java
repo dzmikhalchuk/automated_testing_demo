@@ -5,4 +5,6 @@ public interface TestRailApiIds {
     String getCase();
 
     String getMessage();
+
+    String getFailureMsg();
 }

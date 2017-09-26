@@ -17,6 +17,7 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
 
     private String testRailMessage;
     private String testRailCaseId;
+    private String testFailureMsg;
 
     @Features("PRODUCTS")
     @Stories("PRODUCT ELEMENTS")
@@ -81,4 +82,9 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
 
     @Override
     public String getMessage() { return testRailMessage; }
+
+    @Override
+    public String getFailureMsg() {
+        return testFailureMsg;
+    }
 }

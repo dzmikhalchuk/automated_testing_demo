@@ -24,7 +24,7 @@ public class TestRailListener extends TestListenerAdapter {
             client.setPassword("NMZ8GFk0gl1caMLi9GoX");
             Map data = new HashMap();
             data.put("status_id", status);
-            data.put("comment", "Environment: browser - " + message + ". Test Failed");
+            data.put("comment", "Environment: browser - " + message + ". Test Failed. Error message: " + result.getThrowable().toString());
             try {
                 JSONObject r = (JSONObject) client.sendPost("add_result_for_case/1/" + caseId, data);
             } catch (IOException e) {
