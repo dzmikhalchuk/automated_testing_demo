@@ -2,7 +2,9 @@ package com.exadel.demo.test;
 
 import org.testng.annotations.Test;
 import ru.yandex.qatools.allure.annotations.Attachment;
+import ru.yandex.qatools.allure.annotations.Features;
 import ru.yandex.qatools.allure.annotations.Step;
+import ru.yandex.qatools.allure.annotations.Title;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -29,7 +31,8 @@ public class ApiTest {
         return bytesArray;
     }
 
-
+    @Features("Api")
+    @Title("Verify response")
     @Test
     public void jsonValidationTest() throws Exception {
 
@@ -37,11 +40,11 @@ public class ApiTest {
                 "  \"users\": [\n" +
                 "    {\n" +
                 "      \"name\": \"igor\",\n" +
-                "      \"password\": \"zazhigai\"\n" +
+                "      \"password\": \"passd\"\n" +
                 "    },\n" +
                 "    {\n" +
                 "      \"name\": \"vasya\",\n" +
-                "      \"password\": \"pupkin\"\n" +
+                "      \"password\": \"wrongpass\"\n" +
                 "    }\n" +
                 "  ],\n" +
                 "  \"id\": 123,\n" +
