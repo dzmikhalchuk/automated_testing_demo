@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static ru.yandex.qatools.allure.model.SeverityLevel.CRITICAL;
 
 
 public class ApiTest {
@@ -31,6 +32,8 @@ public class ApiTest {
     @Features("API")
     @Stories("RESPONSE")
     @Title("Verify response")
+    @Description("Verify response with valid json schema")
+    @Severity(CRITICAL)
     @Test
     public void jsonValidationTest() throws Exception {
 
