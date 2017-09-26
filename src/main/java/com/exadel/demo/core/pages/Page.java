@@ -5,6 +5,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.yandex.qatools.allure.annotations.Step;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
@@ -22,6 +23,7 @@ public class Page {
         PageFactory.initElements(driver, this);
     }
 
+    @Step("Navigate to url: {0}")
     public HomePage navigateToHomePage(String url){
         logger.info("Navigate to Home page");
         driver.get(url);
