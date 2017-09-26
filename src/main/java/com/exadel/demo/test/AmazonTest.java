@@ -26,6 +26,7 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     @Test
     public void testProductElements() {
         this.testRailMessage = browser;
+        this.testRailCaseId = "1";
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
         ProductPage productPage = homePage.setSearchCategory("Amazon Devices")
@@ -48,6 +49,7 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     @Test
     public void testProductTitleIphone() {
         this.testRailMessage = browser;
+        this.testRailCaseId = "2";
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
         ProductPage productPage = homePage.setSearchCategory("Amazon Devices")
@@ -64,6 +66,7 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     @Test
     public void testProductTitleKindle() {
         this.testRailMessage = browser;
+        this.testRailCaseId = "2";
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
         ProductPage productPage = homePage.setSearchCategory("Amazon Devices")
