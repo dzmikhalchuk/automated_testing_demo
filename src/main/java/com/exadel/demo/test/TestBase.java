@@ -5,7 +5,9 @@ import com.exadel.demo.core.utils.DriverFactory;
 import com.exadel.demo.core.utils.PropertiesLoader;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.LoggerFactory;
+import org.testng.ITestContext;
 import org.testng.annotations.*;
+import org.testng.xml.XmlTest;
 import ru.yandex.qatools.allure.annotations.Attachment;
 
 import java.io.File;
@@ -33,10 +35,13 @@ public class TestBase {
 
     @BeforeMethod
     @Parameters({"browser"})
-    public void init(@Optional String browser) throws MalformedURLException {
+    public void init(@Optional String browser, ITestContext context) throws MalformedURLException {
         logger.info("Driver initialisation");
         driver = new DriverFactory().getDriver(browser);
         driver.manage().window().maximize();
+
+        XmlTest test = context.getCurrentXmlTest();
+        test.setName(test.getName() + ": " + browser);
 
     }
 
