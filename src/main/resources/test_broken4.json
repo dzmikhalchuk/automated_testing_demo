@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "name": "igor",
+      "password": "neigor"
+    },
+    {
+      "name": "vasya",
+      "password": "pupkin"
+    }
+  ],
+  "id": 123,
+  "success": false
+}

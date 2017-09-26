@@ -1,0 +1,37 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "properties": {
+    "id": {
+      "type": "number"
+    },
+    "success": {
+      "type": "number",
+      "enum":[true]
+    },
+    "users": {
+      "items": {
+        "properties": {
+          "name": {
+            "type": "number"
+          },
+          "password": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "name",
+          "password"
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "id",
+    "success",
+    "users"
+  ],
+  "type": "object"
+}
