@@ -18,7 +18,6 @@ public class AmazonTest extends TestBase {
     @Features("PRODUCTS")
     @Stories("PRODUCT ELEMENTS")
     @Title("Test product elements")
-    @TestCaseId("1")
     @Test
     public void testProductElements() {
         Page page = new Page(driver);
@@ -38,7 +37,6 @@ public class AmazonTest extends TestBase {
     @Features("PRODUCTS")
     @Stories("PRODUCT SEARCH")
     @Title("Test product title: Iphone")
-    @TestCaseId("2")
     @Test
     public void testProductTitleIphone() {
         Page page = new Page(driver);
@@ -52,7 +50,6 @@ public class AmazonTest extends TestBase {
 
     @Features("PRODUCTS")
     @Stories("PRODUCT SEARCH")
-    @TestCaseId("2")
     @Test
     public void testProductTitleKindle() {
         Page page = new Page(driver);
