@@ -3,6 +3,7 @@ package com.exadel.demo.test;
 import com.exadel.demo.core.pages.HomePage;
 import com.exadel.demo.core.pages.Page;
 import com.exadel.demo.core.pages.ProductPage;
+import com.exadel.demo.core.utils.testrailUtils.TestRailApiIds;
 import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -12,7 +13,10 @@ import static org.testng.Assert.assertTrue;
 import static ru.yandex.qatools.allure.model.SeverityLevel.CRITICAL;
 import static ru.yandex.qatools.allure.model.SeverityLevel.MINOR;
 
-public class AmazonTest extends TestBase {
+public class AmazonTest extends TestBase implements TestRailApiIds {
+
+    private String testRailMessage;
+    private String testRailCaseId;
 
     @Features("PRODUCTS")
     @Stories("PRODUCT ELEMENTS")
@@ -21,6 +25,7 @@ public class AmazonTest extends TestBase {
     @Description("Verify that product page contains all elements")
     @Test
     public void testProductElements() {
+        this.testRailMessage = browser;
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
         ProductPage productPage = homePage.setSearchCategory("Amazon Devices")
@@ -42,6 +47,7 @@ public class AmazonTest extends TestBase {
     @Description("Verify that title contains product name")
     @Test
     public void testProductTitleIphone() {
+        this.testRailMessage = browser;
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
         ProductPage productPage = homePage.setSearchCategory("Amazon Devices")
@@ -57,6 +63,7 @@ public class AmazonTest extends TestBase {
     @Description("Verify that title contains product name")
     @Test
     public void testProductTitleKindle() {
+        this.testRailMessage = browser;
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
         ProductPage productPage = homePage.setSearchCategory("Amazon Devices")
@@ -65,4 +72,10 @@ public class AmazonTest extends TestBase {
                 .clickOnProductById(0);
         assertTrue(StringUtils.containsIgnoreCase(productPage.getProductTitleText(), "Kindle"), "Product title does not contain 'Kindle'");
     }
+
+    @Override
+    public String getCase() { return testRailCaseId; }
+
+    @Override
+    public String getMessage() { return testRailMessage; }
 }

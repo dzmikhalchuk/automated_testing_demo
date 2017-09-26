@@ -1,8 +1,10 @@
 package com.exadel.demo.test;
 
+import com.exadel.demo.core.testrail.APIClient;
 import com.exadel.demo.core.utils.CustomTestListener;
 import com.exadel.demo.core.utils.DriverFactory;
 import com.exadel.demo.core.utils.PropertiesLoader;
+import com.exadel.demo.core.utils.testrailUtils.TestRailListener;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
@@ -18,13 +20,14 @@ import java.net.MalformedURLException;
 import java.nio.file.Paths;
 import java.util.Properties;
 
-@Listeners({CustomTestListener.class})
+@Listeners({CustomTestListener.class, TestRailListener.class})
 public class TestBase {
 
     protected RemoteWebDriver driver;
     public final org.slf4j.Logger logger = LoggerFactory.getLogger(this.getClass());
     protected PropertiesLoader propertiesLoader = new PropertiesLoader();
     protected Properties env;
+    protected String browser;
 
     @BeforeSuite(alwaysRun = true)
     public void setEnvironment() {
@@ -42,7 +45,7 @@ public class TestBase {
 
         XmlTest test = context.getCurrentXmlTest();
         test.setName(test.getName() + ": " + browser);
-
+        browser = browser;
     }
 
     @AfterMethod
