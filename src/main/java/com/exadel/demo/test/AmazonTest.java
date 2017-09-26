@@ -26,7 +26,7 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     @Description("Verify that product page contains all elements")
     @Test
     public void testProductElements() {
-        this.testRailMessage = browser;
+        this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage() + "; Product name - " + propertiesLoader.getProductName();
         this.testRailCaseId = "1";
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
@@ -49,7 +49,7 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     @Description("Verify that title contains product name")
     @Test
     public void testProductTitleIphone() {
-        this.testRailMessage = browser;
+        this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage() + "; Product name - " + propertiesLoader.getProductName();
         this.testRailCaseId = "2";
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
@@ -66,7 +66,7 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     @Description("Verify that title contains product name")
     @Test
     public void testProductTitleKindle() {
-        this.testRailMessage = browser;
+        this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage() + "; Product name - " + propertiesLoader.getProductName();
         this.testRailCaseId = "2";
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());

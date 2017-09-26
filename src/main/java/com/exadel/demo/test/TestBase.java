@@ -28,6 +28,7 @@ public class TestBase {
     protected PropertiesLoader propertiesLoader = new PropertiesLoader();
     protected Properties env;
     protected String browser;
+    protected String url;
 
     @BeforeSuite(alwaysRun = true)
     public void setEnvironment() {
