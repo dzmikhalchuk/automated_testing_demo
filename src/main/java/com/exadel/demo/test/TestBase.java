@@ -6,8 +6,10 @@ import com.exadel.demo.core.utils.PropertiesLoader;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.*;
+import ru.yandex.qatools.allure.annotations.Attachment;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -59,5 +61,19 @@ public class TestBase {
 
     public RemoteWebDriver getDriver() {
         return driver;
+    }
+
+    //text/plain, text/html, text/css, text/javascript
+    @Attachment(value = "JSON schema", type = "text/plain")
+    public byte[] jsonSchemaToCheck(String jsonFilename) throws IOException {
+        //init array with file length
+        File myJsonFile = new File(Paths.get("").toAbsolutePath().toString() +
+                File.separator + "src" + File.separator + "test" + File.separator + "resources" + File.separator + jsonFilename);
+        byte[] bytesArray = new byte[(int) myJsonFile.length()];
+        FileInputStream fis = new FileInputStream(myJsonFile);
+        fis.read(bytesArray); //read file into bytes[]
+        fis.close();
+
+        return bytesArray;
     }
 }

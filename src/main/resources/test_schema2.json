@@ -1,0 +1,47 @@
+
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://example.com/example.json",
+  "properties": {
+    "id": {
+      "default": 123,
+      "description": "An explanation about the purpose of this instance.",
+      "id": "/properties/id",
+      "title": "The id schema",
+      "type": "integer"
+    },
+    "success": {
+      "default": true,
+      "description": "An explanation about the purpose of this instance.",
+      "id": "/properties/success",
+      "title": "The success schema",
+      "type": "number"
+    },
+    "users": {
+      "id": "/properties/users",
+      "items": {
+        "id": "/properties/users/items",
+        "properties": {
+          "name": {
+            "default": "igor",
+            "description": "An explanation about the purpose of this instance.",
+            "id": "/properties/users/items/properties/name",
+            "title": "The name schema",
+            "type": "array"
+          },
+          "password": {
+            "default": "zazhigai",
+            "description": "An explanation about the purpose of this instance.",
+            "id": "/properties/users/items/properties/password",
+            "title": "The password schema",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}
