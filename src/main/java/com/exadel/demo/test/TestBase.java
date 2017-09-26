@@ -46,8 +46,8 @@ public class TestBase {
 
         Map data = new HashMap();
         data.put("suit_id", 1);
-        data.put("name", "Demo Test Run");
-//        data.put("case_ids", "[1, 2]");
+        data.put("name", "Demo Test Run - " + browser.toUpperCase());
+        data.put("include_all", true);
         JSONObject r = (JSONObject) client.sendPost("add_run/1", data);
     }
 
