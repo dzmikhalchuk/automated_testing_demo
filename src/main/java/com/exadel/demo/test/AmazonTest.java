@@ -7,16 +7,19 @@ import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import ru.yandex.qatools.allure.annotations.Features;
+import ru.yandex.qatools.allure.annotations.Stories;
+import ru.yandex.qatools.allure.annotations.TestCaseId;
 import ru.yandex.qatools.allure.annotations.Title;
 
-import static com.exadel.demo.core.enums.TestGroups.SMOKE;
 import static org.testng.Assert.assertTrue;
 
 public class AmazonTest extends TestBase {
 
-    @Features("Product elements")
+    @Features("PRODUCTS")
+    @Stories("PRODUCT ELEMENTS")
     @Title("Test product elements")
-    @Test(groups = {SMOKE})
+    @TestCaseId("1")
+    @Test
     public void testProductElements() {
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
@@ -32,9 +35,11 @@ public class AmazonTest extends TestBase {
         assertion.assertAll();
     }
 
-    @Features("Product search")
+    @Features("PRODUCTS")
+    @Stories("PRODUCT SEARCH")
     @Title("Test product title: Iphone")
-    @Test(groups = {SMOKE})
+    @TestCaseId("2")
+    @Test
     public void testProductTitleIphone() {
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
@@ -45,9 +50,10 @@ public class AmazonTest extends TestBase {
         assertTrue(StringUtils.containsIgnoreCase(productPage.getProductTitleText(), "Iphone"), "Product title does not contain 'Iphone'");
     }
 
-    @Features("Product search")
-    @Title("Test product title: Kindle")
-    @Test(groups = {SMOKE})
+    @Features("PRODUCTS")
+    @Stories("PRODUCT SEARCH")
+    @TestCaseId("2")
+    @Test
     public void testProductTitleKindle() {
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());

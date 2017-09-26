@@ -1,10 +1,7 @@
 package com.exadel.demo.test;
 
 import org.testng.annotations.Test;
-import ru.yandex.qatools.allure.annotations.Attachment;
-import ru.yandex.qatools.allure.annotations.Features;
-import ru.yandex.qatools.allure.annotations.Step;
-import ru.yandex.qatools.allure.annotations.Title;
+import ru.yandex.qatools.allure.annotations.*;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,7 +28,8 @@ public class ApiTest {
         return bytesArray;
     }
 
-    @Features("Api")
+    @Features("API")
+    @Stories("RESPONSE")
     @Title("Verify response")
     @Test
     public void jsonValidationTest() throws Exception {
@@ -50,40 +48,6 @@ public class ApiTest {
                 "  \"id\": 123,\n" +
                 "  \"success\": true\n" +
                 "}";
-//        JsonNode SCHEMA_URI = JsonLoader.fromString(Files.readFile(new File("target/classes/test_schema.json")));
-//        JsonNode good = JsonLoader.fromString(Files.readFile(new File("target/classes/test.json")));
-//        JsonNode bad = JsonLoader.fromString(Files.readFile(new File("target/classes/test_broken.json")));
-//        JsonNode bad2 = JsonLoader.fromString(Files.readFile(new File("target/classes/test_broken2.json")));
-//        JsonNode bad3 = JsonLoader.fromString(Files.readFile(new File("target/classes/test_broken3.json")));
-//        JsonNode bad4 = JsonLoader.fromString(Files.readFile(new File("target/classes/test_broken4.json")));
-//
-//        JsonSchemaFactory factory = JsonSchemaFactory.byDefault();
-//
-//        JsonSchema schema = factory.getJsonSchema(SCHEMA_URI);
-//
-//        ProcessingReport report;
-//
-//        SoftAssert assertion = new SoftAssert();
-//
-//        report = schema.validate(good);
-//        System.out.println(report);
-//        Assert.assertTrue(report.isSuccess());
-//
-//        report = schema.validate(bad);
-//        System.out.println(report);
-//        report = schema.validate(bad2);
-//        System.out.println(report);
-//        Assert.assertTrue(report.isSuccess());
-//
-//        report = schema.validate(bad3);
-//        System.out.println(report);
-//        Assert.assertTrue(report.isSuccess());
-//
-//        report = schema.validate(bad4);
-//        System.out.println(report);
-//        Assert.assertTrue(report.isSuccess());
-//
-//        assertion.assertAll();
 
         verifyJsonSchema(myRes, "test_schema2.json");
     }
@@ -94,10 +58,4 @@ public class ApiTest {
         jsonSchemaToCheck(jsonFilename);
         assertThat(responseAsString, matchesJsonSchemaInClasspath(jsonFilename));
     }
-
-
-
-
-
-
 }
