@@ -21,6 +21,7 @@ public class TestRailListener extends TestListenerAdapter {
             int status = 5;
             String caseId = ((TestRailApiIds) currentClass).getCase();
             String message = ((TestRailApiIds) currentClass).getMessage();
+            String runId = ((TestRailApiIds) currentClass).getTetRunId();
             APIClient client = new APIClient("https://dzmikhalchuk.testrail.net");
             client.setUser("dmitry.mikhalchuk@gmail.com");
             client.setPassword("NMZ8GFk0gl1caMLi9GoX");
@@ -38,7 +39,7 @@ public class TestRailListener extends TestListenerAdapter {
 
             JSONArray tests = null;
             try {
-                tests = (JSONArray) client.sendGet("get_tests/" + ((TestRailApiIds) currentClass).getTetRunId());
+                tests = (JSONArray) client.sendGet("get_tests/" + runId);
             } catch (IOException e) {
                 e.printStackTrace();
             } catch (APIException e) {
@@ -46,7 +47,7 @@ public class TestRailListener extends TestListenerAdapter {
             }
             for (int i = 0; i < tests.size(); i++) {
                 JSONObject obj = (JSONObject)tests.get(i);
-                if (StringUtils.equalsIgnoreCase((String)obj.get("title"), ((TestRailApiIds) currentClass).getTestName())) {
+                if (StringUtils.equalsIgnoreCase(obj.get("title").toString(), ((TestRailApiIds) currentClass).getTestName())) {
                     Map data = new HashMap();
                     data.put("status_id", 5);
                     data.put("comment", "Environment: " + message );
@@ -94,7 +95,7 @@ public class TestRailListener extends TestListenerAdapter {
             }
             for (int i = 0; i < tests.size(); i++) {
                 JSONObject obj = (JSONObject)tests.get(i);
-                if (StringUtils.equalsIgnoreCase((String)obj.get("title"), ((TestRailApiIds) currentClass).getTestName())) {
+                if (StringUtils.equalsIgnoreCase(obj.get("title").toString(), ((TestRailApiIds) currentClass).getTestName())) {
                     Map data = new HashMap();
                     data.put("status_id", 1);
                     data.put("comment", "Environment: " + message );

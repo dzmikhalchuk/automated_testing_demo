@@ -18,6 +18,7 @@ public class PropertiesLoader  {
     protected String basePage;
     protected String productName;
     protected String productCategory;
+    protected String buildNumber;
 
     public PropertiesLoader() {
         try {
@@ -42,6 +43,7 @@ public class PropertiesLoader  {
         basePage = System.getProperty("URL", prop.getProperty("base.page"));
         productName = System.getProperty("productName", prop.getProperty("product.name"));
         productCategory = System.getProperty("productCategory", prop.getProperty("product.category"));
+        productCategory = System.getProperty("buildNumber");
 
         inputStream.close();
     }
@@ -55,4 +57,6 @@ public class PropertiesLoader  {
     public String getProductName() { return productName; }
 
     public String getProductCategory() { return productCategory; }
+
+    public String getBuildNumber() { return buildNumber; }
 }

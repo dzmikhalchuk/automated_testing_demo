@@ -19,7 +19,7 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     private String testRailCaseId;
     private String testFailureMsg;
     private String testName;
-    private String runId = testRunId;
+    private String runId;
 
     @Features("PRODUCTS")
     @Stories("PRODUCT ELEMENTS")
@@ -28,9 +28,11 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     @Description("Verify that product page contains all elements")
     @Test
     public void testProductElements() {
-        this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage() + "; Product name - " + propertiesLoader.getProductName();
+        this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage()
+                + "; Product name - " + propertiesLoader.getProductName() + "; Product category - " + propertiesLoader.getProductCategory();
         this.testRailCaseId = "1";
         this.testName = "Verify product elements";
+        this.runId = testRunId;
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
         ProductPage productPage = homePage.setSearchCategory(propertiesLoader.getProductCategory())
@@ -52,9 +54,11 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     @Description("Verify that title contains product name")
     @Test
     public void testProductTitleIphone() {
-        this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage() + "; Product name - " + propertiesLoader.getProductName();
+        this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage()
+                + "; Product name - " + propertiesLoader.getProductName() + "; Product category - " + propertiesLoader.getProductCategory();
         this.testRailCaseId = "2";
         this.testName = "Verify product title";
+        this.runId = testRunId;
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
         ProductPage productPage = homePage.setSearchCategory(propertiesLoader.getProductCategory())
@@ -70,9 +74,11 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     @Description("Verify that title contains product name")
     @Test
     public void testProductTitleKindle() {
-        this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage() + "; Product name - " + propertiesLoader.getProductName();
+        this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage()
+                + "; Product name - " + propertiesLoader.getProductName() + "; Product category - " + propertiesLoader.getProductCategory();
         this.testRailCaseId = "2";
         this.testName = "Verify product title";
+        this.runId = testRunId;
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
         ProductPage productPage = homePage.setSearchCategory(propertiesLoader.getProductCategory())
@@ -97,5 +103,5 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     public String getTestName() { return testName; }
 
     @Override
-    public String getTetRunId() { return null; }
+    public String getTetRunId() { return runId; }
 }

@@ -38,18 +38,14 @@ public class TestBase {
 
     @Parameters({"browser"})
     @BeforeSuite(alwaysRun = true)
-    public void setEnvironment(@Optional String browserName, ITestContext context) {
+    public void setEnvironment(@Optional String browserName, ITestContext context) throws IOException, APIException {
         env = new Properties();
         env.setProperty("Base URL", propertiesLoader.getBasePage());
         env.setProperty("Product name", propertiesLoader.getProductName());
 
-        XmlTest test = context.getCurrentXmlTest();
-        test.setName(test.getName() + ": " + browserName);
-        browser = browserName;
-    }
-
-    @BeforeClass(alwaysRun = true)
-    public void testRunInit() throws IOException, APIException {
+//        XmlTest test = context.getCurrentXmlTest();
+//        test.setName(test.getName() + ": " + browserName);
+//        this.browser = browserName;
 
         APIClient client = new APIClient("https://dzmikhalchuk.testrail.net");
         client.setUser("dmitry.mikhalchuk@gmail.com");
@@ -57,22 +53,41 @@ public class TestBase {
 
         Map data = new HashMap();
         data.put("suit_id", 1);
-        data.put("name", "Demo Test Run - " + browser.toUpperCase());
+        data.put("name", "Sprint 1 Test Run #" + propertiesLoader.getBuildNumber());
         data.put("include_all", true);
         JSONObject testRun = (JSONObject) client.sendPost("add_run/1", data);
 
         JSONArray runs = (JSONArray) client.sendGet("get_runs/1");
         JSONObject lastRun = (JSONObject) runs.get(0);
-        testRunId = (String) lastRun.get("id");
-
+        testRunId = lastRun.get("id").toString();
     }
+
+//    @Parameters({"browser"})
+//    @BeforeClass(alwaysRun = true)
+//    public void testRunInit(@Optional String browserName) throws IOException, APIException {
+//
+//        APIClient client = new APIClient("https://dzmikhalchuk.testrail.net");
+//        client.setUser("dmitry.mikhalchuk@gmail.com");
+//        client.setPassword("NMZ8GFk0gl1caMLi9GoX");
+//
+//        Map data = new HashMap();
+//        data.put("suit_id", 1);
+//        data.put("name", "Demo Test Run - " + browserName.toUpperCase());
+//        data.put("include_all", true);
+//        JSONObject testRun = (JSONObject) client.sendPost("add_run/1", data);
+//
+//        JSONArray runs = (JSONArray) client.sendGet("get_runs/1");
+//        JSONObject lastRun = (JSONObject) runs.get(0);
+//        testRunId = lastRun.get("id").toString();
+//    }
 
     @BeforeMethod
     @Parameters({"browser"})
-    public void init(@Optional String browser) throws MalformedURLException {
+    public void init(@Optional String browserName) throws MalformedURLException {
         logger.info("Driver initialisation");
-        driver = new DriverFactory().getDriver(browser);
+        driver = new DriverFactory().getDriver(browserName);
         driver.manage().window().maximize();
+        browser = browserName;
     }
 
     @AfterMethod
