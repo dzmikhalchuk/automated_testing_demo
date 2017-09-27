@@ -51,13 +51,13 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     @Stories("PRODUCT SEARCH")
     @Title("Test product title: Phone")
     @Severity(MINOR)
-    @Description("Verify that title contains product name")
+    @Description("Verify that title contains product name: Phone")
     @Test
     public void testProductTitleIphone() {
         this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage()
                 + "; Product name - " + propertiesLoader.getProductName() + "; Product category - " + propertiesLoader.getProductCategory();
         this.testRailCaseId = "2";
-        this.testName = "Verify product title";
+        this.testName = "Verify product title: Phone";
         this.runId = testRunId;
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
@@ -65,19 +65,19 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
                 .inputProductName("Kindle")
                 .clickOnSearchButton()
                 .clickOnProductById(0);
-        assertTrue(StringUtils.containsIgnoreCase(productPage.getProductTitleText(), "Phone"), "Product title does not contain 'Iphone'");
+        assertTrue(StringUtils.containsIgnoreCase(productPage.getProductTitleText(), "Phone"), "Product title does not contain 'Phone'");
     }
 
     @Features("PRODUCTS")
     @Stories("PRODUCT SEARCH")
     @Severity(CRITICAL)
-    @Description("Verify that title contains product name")
+    @Description("Verify that title contains product name: Kindle")
     @Test
     public void testProductTitleKindle() {
         this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage()
                 + "; Product name - " + propertiesLoader.getProductName() + "; Product category - " + propertiesLoader.getProductCategory();
         this.testRailCaseId = "2";
-        this.testName = "Verify product title";
+        this.testName = "Verify product title: Kindle";
         this.runId = testRunId;
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
