@@ -39,13 +39,6 @@ public class TestBase {
     @Parameters({"browser"})
     @BeforeSuite(alwaysRun = true)
     public void setEnvironment(@Optional String browserName, ITestContext context) throws IOException, APIException {
-        env = new Properties();
-        env.setProperty("Base URL", propertiesLoader.getBasePage());
-        env.setProperty("Product name", propertiesLoader.getProductName());
-
-//        XmlTest test = context.getCurrentXmlTest();
-//        test.setName(test.getName() + ": " + browserName);
-//        this.browser = browserName;
 
         APIClient client = new APIClient("https://dzmikhalchuk.testrail.net");
         client.setUser("dmitry.mikhalchuk@gmail.com");
@@ -60,6 +53,16 @@ public class TestBase {
         JSONArray runs = (JSONArray) client.sendGet("get_runs/1");
         JSONObject lastRun = (JSONObject) runs.get(0);
         testRunId = lastRun.get("id").toString();
+
+        env = new Properties();
+        env.setProperty("Base URL", propertiesLoader.getBasePage());
+        env.setProperty("Product name", propertiesLoader.getProductName());
+        env.setProperty("Product category", propertiesLoader.getProductCategory());
+        env.setProperty("Test rail run", "https://dzmikhalchuk.testrail.net/index.php?/runs/view/" + testRunId);
+
+//        XmlTest test = context.getCurrentXmlTest();
+//        test.setName(test.getName() + ": " + browserName);
+//        this.browser = browserName;
     }
 
 //    @Parameters({"browser"})
