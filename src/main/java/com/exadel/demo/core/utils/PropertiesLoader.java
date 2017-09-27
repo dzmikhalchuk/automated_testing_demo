@@ -43,7 +43,7 @@ public class PropertiesLoader  {
         basePage = System.getProperty("URL", prop.getProperty("base.page"));
         productName = System.getProperty("productName", prop.getProperty("product.name"));
         productCategory = System.getProperty("productCategory", prop.getProperty("product.category"));
-        productCategory = System.getProperty("buildNumber");
+        buildNumber = System.getProperty("buildNumber");
 
         inputStream.close();
     }
