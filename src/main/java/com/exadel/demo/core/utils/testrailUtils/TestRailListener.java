@@ -26,16 +26,6 @@ public class TestRailListener extends TestListenerAdapter {
             client.setUser("dmitry.mikhalchuk@gmail.com");
             client.setPassword("NMZ8GFk0gl1caMLi9GoX");
             String replaceMsg = "java.lang.AssertionError: ";
-//            Map data = new HashMap();
-//            data.put("status_id", status);
-//            data.put("comment", "Environment: " + message + ". Test Failed." + "Error message: " + result.getThrowable().toString().replaceAll(replaceMsg, ""));
-//            try {
-//                JSONObject r = (JSONObject) client.sendPost("add_result_for_case/1/" + caseId, data);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            } catch (APIException e) {
-//                e.printStackTrace();
-//            }
 
             JSONArray tests = null;
             try {
@@ -74,16 +64,6 @@ public class TestRailListener extends TestListenerAdapter {
             APIClient client = new APIClient("https://dzmikhalchuk.testrail.net");
             client.setUser("dmitry.mikhalchuk@gmail.com");
             client.setPassword("NMZ8GFk0gl1caMLi9GoX");
-//            Map data = new HashMap();
-//            data.put("status_id", status);
-//            data.put("comment", "Environment: " + message + ". Test Passed");
-//            try {
-//                JSONObject r = (JSONObject) client.sendPost("add_result_for_case/1/" + caseId, data);
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            } catch (APIException e) {
-//                e.printStackTrace();
-//            }
 
             JSONArray tests = null;
             try {
