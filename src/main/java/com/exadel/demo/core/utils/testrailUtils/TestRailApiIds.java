@@ -7,4 +7,8 @@ public interface TestRailApiIds {
     String getMessage();
 
     String getFailureMsg();
+
+    String getTestName();
+
+    String getTetRunId();
 }

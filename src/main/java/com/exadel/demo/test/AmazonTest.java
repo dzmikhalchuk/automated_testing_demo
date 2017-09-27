@@ -18,6 +18,8 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     private String testRailMessage;
     private String testRailCaseId;
     private String testFailureMsg;
+    private String testName;
+    private String runId = testRunId;
 
     @Features("PRODUCTS")
     @Stories("PRODUCT ELEMENTS")
@@ -28,6 +30,7 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     public void testProductElements() {
         this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage() + "; Product name - " + propertiesLoader.getProductName();
         this.testRailCaseId = "1";
+        this.testName = "Verify product elements";
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
         ProductPage productPage = homePage.setSearchCategory(propertiesLoader.getProductCategory())
@@ -51,6 +54,7 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     public void testProductTitleIphone() {
         this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage() + "; Product name - " + propertiesLoader.getProductName();
         this.testRailCaseId = "2";
+        this.testName = "Verify product title";
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
         ProductPage productPage = homePage.setSearchCategory(propertiesLoader.getProductCategory())
@@ -68,6 +72,7 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     public void testProductTitleKindle() {
         this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage() + "; Product name - " + propertiesLoader.getProductName();
         this.testRailCaseId = "2";
+        this.testName = "Verify product title";
         Page page = new Page(driver);
         HomePage homePage = page.navigateToHomePage(propertiesLoader.getBasePage());
         ProductPage productPage = homePage.setSearchCategory(propertiesLoader.getProductCategory())
@@ -87,4 +92,10 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     public String getFailureMsg() {
         return testFailureMsg;
     }
+
+    @Override
+    public String getTestName() { return testName; }
+
+    @Override
+    public String getTetRunId() { return null; }
 }

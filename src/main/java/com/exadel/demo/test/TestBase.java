@@ -6,6 +6,7 @@ import com.exadel.demo.core.utils.CustomTestListener;
 import com.exadel.demo.core.utils.DriverFactory;
 import com.exadel.demo.core.utils.PropertiesLoader;
 import com.exadel.demo.core.utils.testrailUtils.TestRailListener;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.slf4j.LoggerFactory;
@@ -33,12 +34,22 @@ public class TestBase {
     protected Properties env;
     protected String browser;
     protected String url;
+    protected String testRunId;
 
+    @Parameters({"browser"})
     @BeforeSuite(alwaysRun = true)
-    public void setEnvironment() throws IOException, APIException {
+    public void setEnvironment(@Optional String browserName, ITestContext context) {
         env = new Properties();
         env.setProperty("Base URL", propertiesLoader.getBasePage());
         env.setProperty("Product name", propertiesLoader.getProductName());
+
+        XmlTest test = context.getCurrentXmlTest();
+        test.setName(test.getName() + ": " + browserName);
+        browser = browserName;
+    }
+
+    @BeforeClass(alwaysRun = true)
+    public void testRunInit() throws IOException, APIException {
 
         APIClient client = new APIClient("https://dzmikhalchuk.testrail.net");
         client.setUser("dmitry.mikhalchuk@gmail.com");
@@ -48,19 +59,20 @@ public class TestBase {
         data.put("suit_id", 1);
         data.put("name", "Demo Test Run - " + browser.toUpperCase());
         data.put("include_all", true);
-        JSONObject r = (JSONObject) client.sendPost("add_run/1", data);
+        JSONObject testRun = (JSONObject) client.sendPost("add_run/1", data);
+
+        JSONArray runs = (JSONArray) client.sendGet("get_runs/1");
+        JSONObject lastRun = (JSONObject) runs.get(0);
+        testRunId = (String) lastRun.get("id");
+
     }
 
     @BeforeMethod
     @Parameters({"browser"})
-    public void init(@Optional String browser, ITestContext context) throws MalformedURLException {
+    public void init(@Optional String browser) throws MalformedURLException {
         logger.info("Driver initialisation");
         driver = new DriverFactory().getDriver(browser);
         driver.manage().window().maximize();
-
-        XmlTest test = context.getCurrentXmlTest();
-        test.setName(test.getName() + ": " + browser);
-        this.browser = browser;
     }
 
     @AfterMethod
