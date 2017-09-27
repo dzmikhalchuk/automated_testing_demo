@@ -40,19 +40,19 @@ public class TestBase {
     @BeforeSuite(alwaysRun = true)
     public void setEnvironment(@Optional String browserName, ITestContext context) throws IOException, APIException {
 
-//        APIClient client = new APIClient("https://dzmikhalchuk.testrail.net");
-//        client.setUser("dmitry.mikhalchuk@gmail.com");
-//        client.setPassword("NMZ8GFk0gl1caMLi9GoX");
-//
-//        Map data = new HashMap();
-//        data.put("suit_id", 1);
-//        data.put("name", "Sprint 1 Test Run #" + propertiesLoader.getBuildNumber());
-//        data.put("include_all", true);
-//        JSONObject testRun = (JSONObject) client.sendPost("add_run/1", data);
-//
-//        JSONArray runs = (JSONArray) client.sendGet("get_runs/1");
-//        JSONObject lastRun = (JSONObject) runs.get(0);
-//        testRunId = lastRun.get("id").toString();
+        APIClient client = new APIClient("https://dzmikhalchuk.testrail.net");
+        client.setUser("dmitry.mikhalchuk@gmail.com");
+        client.setPassword("NMZ8GFk0gl1caMLi9GoX");
+
+        Map data = new HashMap();
+        data.put("suit_id", 1);
+        data.put("name", "Sprint 1 Test Run #" + propertiesLoader.getBuildNumber());
+        data.put("include_all", true);
+        JSONObject testRun = (JSONObject) client.sendPost("add_run/1", data);
+
+        JSONArray runs = (JSONArray) client.sendGet("get_runs/1");
+        JSONObject lastRun = (JSONObject) runs.get(0);
+        testRunId = lastRun.get("id").toString();
 
         env = new Properties();
         env.setProperty("Base URL", propertiesLoader.getBasePage());
@@ -69,20 +69,20 @@ public class TestBase {
     @BeforeClass(alwaysRun = true)
     public void testRunInit(@Optional String browserName) throws IOException, APIException {
 
-        APIClient client = new APIClient("https://dzmikhalchuk.testrail.net");
-        client.setUser("dmitry.mikhalchuk@gmail.com");
-        client.setPassword("NMZ8GFk0gl1caMLi9GoX");
-
-        Map data = new HashMap();
-        data.put("suit_id", 1);
-        data.put("name", "Sprint 1 Test Run #" + propertiesLoader.getBuildNumber());
-        logger.info(browserName);
-        data.put("include_all", true);
-        JSONObject testRun = (JSONObject) client.sendPost("add_run/1", data);
-
-        JSONArray runs = (JSONArray) client.sendGet("get_runs/1");
-        JSONObject lastRun = (JSONObject) runs.get(0);
-        testRunId = lastRun.get("id").toString();
+//        APIClient client = new APIClient("https://dzmikhalchuk.testrail.net");
+//        client.setUser("dmitry.mikhalchuk@gmail.com");
+//        client.setPassword("NMZ8GFk0gl1caMLi9GoX");
+//
+//        Map data = new HashMap();
+//        data.put("suit_id", 1);
+//        data.put("name", "Sprint 1 Test Run #" + propertiesLoader.getBuildNumber());
+//        logger.info(browserName);
+//        data.put("include_all", true);
+//        JSONObject testRun = (JSONObject) client.sendPost("add_run/1", data);
+//
+//        JSONArray runs = (JSONArray) client.sendGet("get_runs/1");
+//        JSONObject lastRun = (JSONObject) runs.get(0);
+//        testRunId = lastRun.get("id").toString();
     }
 
     @BeforeMethod
