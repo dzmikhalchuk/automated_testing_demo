@@ -29,7 +29,9 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     @Test
     public void testProductElements() {
         this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage()
-                + "; Product name - " + propertiesLoader.getProductName() + "; Product category - " + propertiesLoader.getProductCategory();
+                + "; Product name - " + propertiesLoader.getProductName()
+                + "; Product category - " + propertiesLoader.getProductCategory()
+                + "; Jenkins link - http://localhost:8080/view/DEMO/job/pypestream_ui_demo/" + propertiesLoader.getBuildNumber() + "/";
         this.testRailCaseId = "1";
         this.testName = "Verify product elements";
         this.runId = testRunId;
@@ -55,7 +57,10 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     @Test
     public void testProductTitleIphone() {
         this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage()
-                + "; Product name - " + propertiesLoader.getProductName() + "; Product category - " + propertiesLoader.getProductCategory();
+                + "; Product name - " + propertiesLoader.getProductName()
+                + "; Product category - " + propertiesLoader.getProductCategory()
+                + "; Jenkins link - http://localhost:8080/view/DEMO/job/pypestream_ui_demo/" + propertiesLoader.getBuildNumber() + "/";
+        http://localhost:8080/view/DEMO/job/pypestream_ui_demo/
         this.testRailCaseId = "2";
         this.testName = "Verify product title: Phone";
         this.runId = testRunId;
@@ -75,7 +80,9 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
     @Test
     public void testProductTitleKindle() {
         this.testRailMessage = "Browser - " + browser + "; URL - " + propertiesLoader.getBasePage()
-                + "; Product name - " + propertiesLoader.getProductName() + "; Product category - " + propertiesLoader.getProductCategory();
+                + "; Product name - " + propertiesLoader.getProductName()
+                + "; Product category - " + propertiesLoader.getProductCategory()
+                + "; Jenkins link - http://localhost:8080/view/DEMO/job/pypestream_ui_demo/" + propertiesLoader.getBuildNumber() + "/";
         this.testRailCaseId = "2";
         this.testName = "Verify product title: Kindle";
         this.runId = testRunId;
