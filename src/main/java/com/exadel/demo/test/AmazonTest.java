@@ -62,7 +62,6 @@ public class AmazonTest extends TestBase implements TestRailApiIds {
                 + "; Product category - " + propertiesLoader.getProductCategory()
                 + "; Jenkins link - http://localhost:8080/view/DEMO/job/pypestream_ui_demo/" + propertiesLoader.getBuildNumber() + "/"
                 + "; Allure report - http://localhost:8080/view/DEMO/job/pypestream_ui_demo/" + propertiesLoader.getBuildNumber() + "/allure/";
-        http://localhost:8080/view/DEMO/job/pypestream_ui_demo/
         this.testRailCaseId = "2";
         this.testName = "Verify product title: Phone";
         this.runId = testRunId;
